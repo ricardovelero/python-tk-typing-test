@@ -1,8 +1,26 @@
-from gui import TypeTestGui
 from type_test import TypeTest
-
-gui = TypeTestGui()
+from tkinter import *
+from tkinter import messagebox
 
 typetest = TypeTest()
+window = Tk()
+window.title("Typing Speed Test")
+window.config(padx=50, pady=50)
 
-typetest.execute_test()
+messagebox.showinfo(
+    message="This is a one minute typing test to meassure your typing speed. When ready dismiss this message and start typing the words that appear in the window.")
+
+
+# Labels
+show_paragraph = Label(text=typetest.generate_paragraph())
+show_paragraph.grid(column=0, row=0)
+
+typing_label = Label(text="Type here: ")
+typing_label.grid(column=0, row=1)
+
+# Inputs
+text_input = Entry(width=20)
+text_input.grid(column=0, row=2)
+text_input.focus()
+
+window.mainloop()

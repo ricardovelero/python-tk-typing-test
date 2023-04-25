@@ -2,14 +2,17 @@ from wonderwords import RandomSentence
 import time
 
 class TypeTest():
-    def __init__(self, length=3) -> None:
+    def __init__(self) -> None:
         self.sentences_list = []
         self.paragraph = ""
+
+    def generate_paragraph(self, length=3):
         for i in range(length):
             sentence = RandomSentence()
             random_sentence = sentence.sentence()
             self.sentences_list.append(random_sentence)
             self.paragraph += random_sentence + " "
+        return self.paragraph
 
     def execute_test(self):
         print("Type the below paragraph as quickly as possible\n")
