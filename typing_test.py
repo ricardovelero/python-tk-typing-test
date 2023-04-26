@@ -39,7 +39,8 @@ class TypingSpeedTest:
     def generate_word(self):
         # Generate a random word from wonderwords
         self.current_word = self.random_word.word()
-        self.word_label.config(text=self.current_word)
+        self.word_label.config(text=self.current_word,
+                               background="black", foreground="white")
 
     def start_test(self):
         # Generate a random word and change the button text to restart
@@ -77,7 +78,13 @@ class TypingSpeedTest:
         if typed_word == self.current_word:
             self.entry.delete(0, tk.END)
             self.generate_word()
-            self.word_count += 1
+        else:
+            self.switch_label_bg_fg(self.word_label)
+
+    def switch_label_bg_fg(self, label):
+        bg = label.cget("background")
+        fg = label.cget("foreground")
+        label.configure(background=fg, foreground=bg)
 
     def run(self):
         # Bind the enter key to check the typed word
