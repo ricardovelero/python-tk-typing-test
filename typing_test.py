@@ -1,8 +1,6 @@
 import tkinter as tk
-import random
 import time
 from wonderwords import RandomWord
-from threading import Timer
 
 
 class TypingSpeedTest:
@@ -43,7 +41,7 @@ class TypingSpeedTest:
                                background="black", foreground="white")
 
     def start_test(self):
-        # Generate a random word and change the button text to restart
+        # Generate a random word and hide restart button
         self.generate_word()
         self.start_button.pack_forget()
 
@@ -77,6 +75,7 @@ class TypingSpeedTest:
         typed_word = self.entry.get()
         if typed_word == self.current_word:
             self.entry.delete(0, tk.END)
+            self.word_count += 1
             self.generate_word()
         else:
             self.switch_label_bg_fg(self.word_label)
