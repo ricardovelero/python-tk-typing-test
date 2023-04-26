@@ -1,14 +1,15 @@
 from wonderwords import RandomSentence
 import time
 
+
 class TypeTest():
     def __init__(self) -> None:
         self.sentences_list = []
         self.paragraph = ""
 
     def generate_paragraph(self, length=3):
+        sentence = RandomSentence()
         for i in range(length):
-            sentence = RandomSentence()
             random_sentence = sentence.sentence()
             self.sentences_list.append(random_sentence)
             self.paragraph += random_sentence + " "
